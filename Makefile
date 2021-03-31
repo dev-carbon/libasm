@@ -6,15 +6,15 @@
 #    By: humanfou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 10:42:37 by humanfou          #+#    #+#              #
-#    Updated: 2021/03/29 10:47:31 by humanfou         ###   ########.fr        #
+#    Updated: 2021/03/31 01:05:12 by humanfou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libasm
+NAME = libasm.a
 
 LIB = ar rcs
 
-CC = gcc
+CC = clang
 
 CCFLAGS = -Wall -Wextra -Werror -fomit-frame-pointer
 
@@ -23,12 +23,12 @@ SANITIZE = -g3 -fomit-frame-pointer
 ASM = nasm
 
 ifeq ($(shell uname),Linux)
-	ASMFLAGS = -felf64
+	ASMFLAGS = -f elf64
 else
 	ASMFLAGS = -f macho64
 endif
 
-ASM_SRCS = $(wildcard *.s) \
+ASM_SRCS = $(wildcard srcs/*.s) \
 
 ASM_OBJS = $(ASM_SRCS:%.s=%.o)
 
@@ -44,10 +44,10 @@ test: all
 	$(ASM) $(ASMFLAGS) -o $@ $<
 
 clean:
-	rm -rf $(ASM_OBJS)
+	@rm -rf $(ASM_OBJS)
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
 
