@@ -28,6 +28,8 @@ else
 	ASMFLAGS = -f macho64
 endif
 
+INC = -Iincludes
+
 ASM_SRCS = $(wildcard srcs/*.s) \
 
 ASM_OBJS = $(ASM_SRCS:%.s=%.o)
@@ -41,13 +43,13 @@ test: all
 	$(CC) main.c $(NAME)
 
 %.o: %.s
-	$(ASM) $(ASMFLAGS) -o $@ $<
+	$(ASM) $(ASMFLAGS) -o $@ $< $(INC)
 
 clean:
 	@rm -rf $(ASM_OBJS)
 
 fclean: clean
-	@rm -rf $(NAME)
+	@rm -rf $(NAME) a.out
 
 re: fclean all
 

@@ -1,1 +1,0 @@
-%define sys_write 1
