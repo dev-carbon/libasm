@@ -16,7 +16,7 @@ LIB = ar rcs
 
 CC = clang
 
-CCFLAGS = -Wall -Wextra -Werror -fomit-frame-pointer
+CCFLAGS = -Wall -Wextra -Werror
 
 SANITIZE = -g3 -fomit-frame-pointer
 
@@ -39,8 +39,8 @@ all: $(NAME)
 $(NAME): $(ASM_OBJS)
 	$(LIB) $(NAME) $(ASM_OBJS)
 
-test: all
-	$(CC) main.c $(NAME)
+test: re
+	$(CC) $(CCFLAGS) $(SANITIZE) main.c $(NAME)
 
 %.o: %.s
 	$(ASM) $(ASMFLAGS) -o $@ $< $(INC)
