@@ -5,15 +5,16 @@ section .text
 global ft_read
 extern __errno_location
 
+; ssize_t ft_read(int fd, void *buf, size_t count);
 ft_read:
 	mov rax, sys_read
 	syscall
 	
 	cmp rax, 0
-	jl error
+	jl .error
 	ret
 
-error:
+.error:
 	neg rax
 	mov r8, rax
 	push r8

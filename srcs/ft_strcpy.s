@@ -1,6 +1,7 @@
 section .text
 
 global ft_strcpy
+
 ft_strcpy:
 	push rbx
 	push rcx
@@ -10,15 +11,15 @@ ft_strcpy:
 	
 	xor rcx, rcx				; rcx: register count index (iterator)
 
-main_loop:
+.loop:
 	mov dl, byte [rsi + rcx]	; dl is the lower 8 bits of rdx.
 	mov [rax + rcx], byte dl
 	cmp byte dl, 0
-	jz done
+	jz .done
 	inc rcx
-	Jmp main_loop
+	Jmp .loop
 
-done:
+.done:
 	pop rbx
 	pop rcx
 	ret

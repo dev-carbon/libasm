@@ -6,7 +6,7 @@
 #    By: humanfou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 10:42:37 by humanfou          #+#    #+#              #
-#    Updated: 2021/03/31 01:05:12 by humanfou         ###   ########.fr        #
+#    Updated: 2021/04/04 11:48:03 by humanfou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ else
 	ASMFLAGS = -f macho64
 endif
 
-INC = -Iincludes
+INC = -Iincludes/
 
 ASM_SRCS = $(wildcard srcs/*.s) \
 

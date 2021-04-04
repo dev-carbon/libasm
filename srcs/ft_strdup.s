@@ -1,5 +1,3 @@
-%include "libasm.s"
-
 section .text
 
 global ft_strdup
@@ -18,14 +16,14 @@ ft_strdup:
 	mov rdi, rax
 	call malloc
 	cmp rax, 0
-	je error
+	je .error
 
 	mov rdi, rax
 	pop rsi
 	call ft_strcpy
 	ret
 
-error:
+.error:
 	pop rdi
 	ret
 

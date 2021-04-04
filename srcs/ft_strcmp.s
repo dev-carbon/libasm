@@ -1,8 +1,8 @@
-;	int		ft_strcmp(char *s1, char *s2);
-
 section .text
 
 global ft_strcmp
+
+;	int		ft_strcmp(char *s1, char *s2);
 ft_strcmp:
 	xor rax, rax
 	xor rbx, rbx
